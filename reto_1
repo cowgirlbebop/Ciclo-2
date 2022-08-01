@@ -1,0 +1,43 @@
+
+package reto_1;
+
+import java.util.Scanner;
+public class Reto_1 {
+    
+    
+    public static void main(String[] args) {
+    Scanner consola=new Scanner(System.in);
+    consola.useDelimiter("\n");
+    int N,tipo;
+    long numero=0;
+    double saldo=0,valor_interes=0,total_interes=0,total_saldo=0;
+    String fecha;
+    System.out.println();
+    N=consola.nextInt();
+    for (int i=0;i<N;i++){
+      System.out.println();
+      numero=consola.nextLong();
+      System.out.println();
+      fecha=consola.next();
+      consola.nextLine();
+      System.out.println();
+      tipo=consola.nextInt();
+      System.out.println();
+      saldo=consola.nextDouble();
+    switch (tipo){
+        case 1:valor_interes=saldo*0.015;break;
+        case 2:valor_interes=saldo*0.017;break;
+        case 3:valor_interes=saldo*0.016;break;
+    }
+    saldo=saldo+valor_interes;
+    total_interes=total_interes+valor_interes;
+    total_saldo=total_saldo+saldo;
+    System.out.println(numero);
+    System.out.println(valor_interes);
+    System.out.println(saldo); 
+    }
+    System.out.println(total_interes);
+    System.out.println(total_saldo);
+    }
+}
+
