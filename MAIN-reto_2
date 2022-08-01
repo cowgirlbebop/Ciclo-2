@@ -1,0 +1,31 @@
+
+package reto_2;
+
+import java.util.Scanner;
+public class Reto_2 {
+
+  
+    public static void main(String[] args) {
+       //Cuenta objeto_cuenta=new Cuenta(10, "2010/10/06/", 1, 600000);
+       //System.out.println(objeto_cuenta.calcular_interes());
+       Scanner consola=new Scanner (System.in);
+       consola.useDelimiter("\n");
+       long numero;
+       String fecha;
+       int tipoCuenta;
+       double saldo, valorInteres=0;
+       System.out.println("Número de cuenta: ");
+       numero=consola.nextLong();
+       System.out.println("Fecha: ");
+       fecha=consola.next();
+       consola.nextLine();
+       System.out.println("Tipo Cuenta (1,2,3): ");
+       tipoCuenta=consola.nextInt();
+       System.out.println("Saldo: ");
+       saldo=consola.nextDouble();
+       Cuenta obj_cuenta=new Cuenta (numero,fecha,tipoCuenta,saldo);
+       valorInteres=obj_cuenta.calcular_interes();
+       System.out.println("Valor Interes: "+valorInteres);
+    }
+    
+}
