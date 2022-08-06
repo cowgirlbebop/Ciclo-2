@@ -1,0 +1,203 @@
+//Super Clase:Cliente
+public class Cliente {
+    private long documento;
+    private String nombre;
+    private String correo;
+    private int celular;
+    private String direccion;
+
+    public Cliente(long documento, String nombre, String correo, int celular, String direccion) {
+        this.documento = documento;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.celular = celular;
+        this.direccion = direccion;
+    }
+
+    public Cliente() {
+    }
+
+    public long getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(long documento) {
+        this.documento = documento;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public int getCelular() {
+        return celular;
+    }
+
+    public void setCelular(int celular) {
+        this.celular = celular;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+    
+}
+Sub Clase:Cuenta
+public class Cuenta extends Cliente {
+    private long numero;
+    private String fecha;
+    private int tipoCuenta;
+    private double saldo;
+
+    public Cuenta(long numero, String fecha, int tipoCuenta, double saldo, long documento, String nombre, String correo, int celular, String direccion) {
+        super(documento, nombre, correo, celular, direccion);
+        this.numero = numero;
+        this.fecha = fecha;
+        this.tipoCuenta = tipoCuenta;
+        this.saldo = saldo;
+    }
+
+    public Cuenta(long numero, String fecha, int tipoCuenta, double saldo) {
+        this.numero = numero;
+        this.fecha = fecha;
+        this.tipoCuenta = tipoCuenta;
+        this.saldo = saldo;
+    }
+
+    public Cuenta() {
+    }
+
+    public long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(long numero) {
+        this.numero = numero;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public int getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    public void setTipoCuenta(int tipoCuenta) {
+        this.tipoCuenta = tipoCuenta;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+    
+    public double calcular_interes(){
+        double valorInteres=0;
+        switch (this.tipoCuenta){
+            case 1:valorInteres=this.saldo*0.015;break;
+            case 2:valorInteres=this.saldo*0.017;break;
+            case 3:valorInteres=this.saldo*0.016;break;
+        }
+        return valorInteres;
+    }
+   
+}
+Sub Clase:CuentaCorriente
+public class CuentaCorriente extends Cliente {
+    private long numero_cuenta;
+    private String fecha;
+    private double saldo;
+    private double porcentaje_interes;
+    private double valor_sobregiro;
+
+    public CuentaCorriente(long numero_cuenta, String fecha, double saldo, double porcentaje_interes, double valor_sobregiro, long documento, String nombre, String correo, int celular, String direccion) {
+        super(documento, nombre, correo, celular, direccion);
+        this.numero_cuenta = numero_cuenta;
+        this.fecha = fecha;
+        this.saldo = saldo;
+        this.porcentaje_interes = porcentaje_interes;
+        this.valor_sobregiro = valor_sobregiro;
+    }
+
+    public CuentaCorriente(long numero_cuenta, String fecha, double saldo, double porcentaje_interes, double valor_sobregiro) {
+        this.numero_cuenta = numero_cuenta;
+        this.fecha = fecha;
+        this.saldo = saldo;
+        this.porcentaje_interes = porcentaje_interes;
+        this.valor_sobregiro = valor_sobregiro;
+    }
+
+    public CuentaCorriente() {
+    }
+    
+    public long getNumero_cuenta() {
+        return numero_cuenta;
+    }
+
+    public void setNumero_cuenta(long numero_cuenta) {
+        this.numero_cuenta = numero_cuenta;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public double getPorcentaje_interes() {
+        return porcentaje_interes;
+    }
+
+    public void setPorcentaje_interes(double porcentaje_interes) {
+        this.porcentaje_interes = porcentaje_interes;
+    }
+
+    public double getValor_sobregiro() {
+        return valor_sobregiro;
+    }
+
+    public void setValor_sobregiro(double valor_sobregiro) {
+        this.valor_sobregiro = valor_sobregiro;
+    }
+    
+    public double calcular_interes(){
+        double valorInteres=0;
+        valorInteres=this.saldo*(this.porcentaje_interes/100);
+        return valorInteres;
+    }    
+}
