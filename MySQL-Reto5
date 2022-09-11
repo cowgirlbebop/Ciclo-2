@@ -1,0 +1,44 @@
+create database reto5;
+use reto5;
+create table semestre(      #Crea tablas con create table
+codigo_lin varchar(15) not null,
+numero_cred varchar(3) not null,
+constraint semestre_pk primary key(codigo_lin)); #Constraint contiene las llaves que enlazan cada tabla. 
+create table facultad(
+codigo_fac varchar(15) not null,
+codigo_mat varchar(15) not null,
+constraint facultad_pk primary key(codigo_fac));
+create table docente(
+codigo_doc varchar(15) not null,
+nombre_doc varchar(50) not null,
+descripcion_fac varchar(80),
+codigo_fac varchar(15) not null,
+constraint docente_pk primary key(codigo_doc),
+constraint docente_codigo_fac_fk foreign key(codigo_fac) references facultad(codigo_fac)); #Llaves foráneas son atributos heredados.
+create table estudios(
+codigo_est varchar(15) not null,
+descripcion_est varchar(80),
+codigo_doc varchar(15) not null,
+constraint estudios_pk primary key(codigo_est),
+constraint estudios_codigo_doc_fk foreign key(codigo_doc) references docente(codigo_doc));
+create table formacion(
+codigo_est varchar(15) not null,
+titulo_est varchar(50) not null,
+fecha_real date not null,
+institucion_edu varchar(50) not null,
+constraint formacion_pk primary key(titulo_est),
+constraint formacion_codigo_est_fk foreign key(codigo_est) references estudios(codigo_est));
+create table materias(
+codigo_mat varchar(15) not null,
+nombre_mat varchar(80) not null,
+numero_hrs datetime not null,
+descripcion_lin varchar(50),
+codigo_lin varchar(15) not null,
+constraint materias_pk primary key(codigo_mat),
+constraint materias_codigo_lin_fk foreign key(codigo_lin) references semestre(codigo_lin));
+create table facultad_materias(
+codigo_fac varchar(15) not null,
+codigo_mat varchar(15) not null,
+constraint facultad_materias_pk primary key(codigo_fac,codigo_mat),
+constraint facultad_materias_codigo_fac_fk foreign key(codigo_fac) references facultad(codigo_fac),
+constraint facultad_materias_codigo_mat_fk foreign key(codigo_mat) references materias(codigo_mat));
